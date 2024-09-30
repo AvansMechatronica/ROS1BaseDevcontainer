@@ -1,0 +1,26 @@
+version: '3'
+services:
+
+  workspace:
+    #env_file:
+    #   - ./default.env
+    build: 
+      context: .
+      dockerfile: Dockerfile
+      args: 
+        BASE_IMAGE: melodic-desktop-full
+        #${ROS_VERSION}
+    image: avans-ros1:melodic-desktop-full
+    #{$ROS_VERSION}
+    ipc: host
+    security_opt:
+    - seccomp:unconfined
+    ports:
+    - "3001:3000"
+    - "3002:8888"
+    volumes:
+    - workspace:/workspace
+    environment:
+    - DISPLAY=host.docker.internal:0.0
+volumes:
+  workspace:
