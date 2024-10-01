@@ -1,7 +1,7 @@
 # Avans ROS1 Docker/DevContainer development
 
 
-# Underconstruntion and not complete 
+# Under construction and not complete yet!
 
 ![Image](documentation/images/docker.png)
 
