@@ -2,6 +2,7 @@
 
 
 # Under construction and not complete yet!
+# Development stoped, wil not continue, due segmentation fault in RVIZ
 
 ![Image](documentation/images/docker.png)
 

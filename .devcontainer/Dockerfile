@@ -1,5 +1,5 @@
-# Basis image: ROS 2 Humble met desktop full
-ARG BASE_IMAGE=humble-desktop-full
+# Basis image: ROS 1 Melodic met desktop full
+ARG BASE_IMAGE=melodic-desktop-full-bionic
 
 FROM osrf/ros:$BASE_IMAGE
 
@@ -38,35 +38,6 @@ RUN    apt-get install -y bash-completion \
 #RUN npm install -g yarn
 
 
-#RUN apt-get update && apt-get upgrade -y && \
-#    apt-get install -y bash-completion \
-#    less \
-#    language-pack-en \
-#    nano \
-#    dos2unix\
-#    iputils-ping \
-#    net-tools 
-    #\
-    #pip
-
-
-
-
-# basic python packages
-#RUN apt-get update && pip install --upgrade --ignore-installed --no-cache-dir \
-#    pyassimp pylint==1.9.4 \
-#    autopep8 \
-#    python-language-server[all] \
-#    notebook~=5.7 \
-#    Pygments \
-#    matplotlib \
-#    ipywidgets \
-#    jupyter_contrib_nbextensions \
-#    nbimporter \
-#    supervisor \
-#    supervisor_twiddler \
-#    argcomplete 
-
 
 RUN apt-get install -y \
     python-catkin-tools \
@@ -84,6 +55,7 @@ RUN apt-get install -y \
     ros-$ROS_DISTRO-rqt-joint-trajectory-controller\
     ros-$ROS_DISTRO-ros-control \
     ros-$ROS_DISTRO-ros-controllers
+#Add own ROS Packeges here
 
 # add non-root user
 RUN useradd -m developer && \
@@ -93,16 +65,6 @@ RUN useradd -m developer && \
 # install depending packages (install moveit! algorithms on the workspace side, since moveit-commander loads it from the workspace)
 
 
-# Update en installeer vereiste pakketten
-#RUN apt-get install -y \
-#    git \
-#    curl \
-#    wget \
-#    lsb-release \
-#    python3-pip \
-#    software-properties-common \
-#    supervisor \
-#    dbus-x11 
 
 # Configuratie voor VNC en supervisor
 RUN mkdir -p /etc/supervisor/conf.d
@@ -114,20 +76,6 @@ COPY entrypoint.sh /entrypoint.sh
 RUN dos2unix /entrypoint.sh
 
 #COPY --from=xsdcache /opt/xsd /opt/xsd
-
-#RUN apt-get install -y \
-#    ros-$ROS_DISTRO-moveit \
-#    ros-$ROS_DISTRO-moveit-ros-visualization \
-#    ros-$ROS_DISTRO-controller-manager-msgs \
-#    ros-$ROS_DISTRO-hardware-interface \
-#    ros-$ROS_DISTRO-joint-state-broadcaster \
-#    ros-$ROS_DISTRO-joint-trajectory-controller \
-#    ros-$ROS_DISTRO-joint-state-publisher \
-#    ros-$ROS_DISTRO-control-toolbox \
-#    ros-$ROS_DISTRO-controller-manager \
-#    ros-$ROS_DISTRO-desktop \
-#    ros-$ROS_DISTRO-moveit-servo 
-#Add own ROS Packeges here
 
 #RUN curl -sSL http://get.gazebosim.org | sh
 
@@ -141,17 +89,6 @@ RUN dos2unix /entrypoint.sh
 #RUN apt-get install -y ros-$ROS_DISTRO-ur
 
 RUN rm -rf /var/lib/apt/lists/*
-
-#RUN if [ $(lsb_release -cs) = "focal" ]; then \
-#        apt-get update; \
-#        apt-get install -y python-is-python3 python3-catkin-tools python3-colcon-common-extensions; \
-#        apt-get clean; \
-#        curl -kL https://bootstrap.pypa.io/get-pip.py | python; \
-#    else \
-#        curl -kL https://bootstrap.pypa.io/pip/2.7/get-pip.py | python; \
-#    fi && \
-#    pip install --upgrade --ignore-installed --no-cache-dir pyassimp pylint==1.9.4 autopep8 python-language-server[all] notebook~=5.7 Pygments matplotlib ipywidgets jupyter_contrib_nbextensions nbimporter supervisor supervisor_twiddler argcomplete
-
 
 
 

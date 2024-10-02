@@ -2,7 +2,7 @@
 	"name": "ROS devcontainer for vscode",
 //	"preCreateCommand": "./detect_os.sh",
 	"containerEnv": {
-    "ROS_VERSION": "humble-desktop-full"
+    "ROS_VERSION": "humble-desktop-full-bionic"
 	},
 
 	"dockerComposeFile": [

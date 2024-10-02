@@ -8,9 +8,9 @@ services:
       context: .
       dockerfile: Dockerfile
       args: 
-        BASE_IMAGE: melodic-desktop-full
+        BASE_IMAGE: melodic-desktop-full-bionic
         #${ROS_VERSION}
-    image: avans-ros1:melodic-desktop-full
+    image: avans-ros1:melodic-desktop-full-bionic
     #{$ROS_VERSION}
     ipc: host
     security_opt:
