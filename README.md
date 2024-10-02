@@ -1,8 +1,8 @@
 # Avans ROS1 Docker/DevContainer development
 
 
-# Under construction and not complete yet!
-# Development stoped, wil not continue, due segmentation fault in RVIZ
+
+# Development stopped, wil not continue, due segmentation fault in RVIZ
 
 ![Image](documentation/images/docker.png)
 
